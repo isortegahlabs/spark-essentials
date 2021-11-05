@@ -68,7 +68,7 @@ object RDDs extends App {
   val minMsft = msftRDD.min() // action
 
   // reduce
-  numbersRDD.reduce(_ + _)
+  val r = numbersRDD.reduce(_ + _).toDouble
 
   // grouping
   val groupedStocksRDD = stocksRDD.groupBy(_.symbol)

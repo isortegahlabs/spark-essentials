@@ -117,11 +117,12 @@ object DataSources extends App {
   moviesDF.write
     .format("csv")
     .option("header", "true")
+    .mode(SaveMode.Overwrite)
     .option("sep", "\t")
     .save("src/main/resources/data/movies.csv")
 
   // Parquet
-  moviesDF.write.save("src/main/resources/data/movies.parquet")
+  moviesDF.write.mode(SaveMode.Overwrite).save("src/main/resources/data/movies.parquet")
 
   // save to DF
   moviesDF.write

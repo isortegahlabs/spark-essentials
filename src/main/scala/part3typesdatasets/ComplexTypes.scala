@@ -65,6 +65,6 @@ object ComplexTypes extends App {
     expr("Title_Words[0]"), // indexing
     size(col("Title_Words")), // array size
     array_contains(col("Title_Words"), "Love") // look for value in array
-  )
+  ).show()
 
 }

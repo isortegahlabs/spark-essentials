@@ -25,6 +25,7 @@ object Datasets extends App {
   implicit val intEncoder = Encoders.scalaInt
   val numbersDS: Dataset[Int] = numbersDF.as[Int]
 
+  numbersDS.filter(_ < 100).show()
   // dataset of a complex type
   // 1 - define your case class
   case class Car(
@@ -35,7 +36,7 @@ object Datasets extends App {
                 Horsepower: Option[Long],
                 Weight_in_lbs: Long,
                 Acceleration: Double,
-                Year: Date,
+                Year: String,
                 Origin: String
                 )
 
@@ -89,7 +90,7 @@ object Datasets extends App {
   val bandsDS = readDF("bands.json").as[Band]
 
   val guitarPlayerBandsDS: Dataset[(GuitarPlayer, Band)] = guitarPlayersDS.joinWith(bandsDS, guitarPlayersDS.col("band") === bandsDS.col("id"), "inner")
-
+  guitarPlayerBandsDS.show()
   /**
     * Exercise: join the guitarsDS and guitarPlayersDS, in an outer join
     * (hint: use array_contains)

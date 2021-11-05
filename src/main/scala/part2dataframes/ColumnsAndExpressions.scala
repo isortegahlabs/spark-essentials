@@ -29,10 +29,10 @@ object ColumnsAndExpressions extends App {
     'Year, // Scala Symbol, auto-converted to column
     $"Horsepower", // fancier interpolated string, returns a Column object
     expr("Origin") // EXPRESSION
-  )
+  ).show()
 
   // select with plain column names
-  carsDF.select("Name", "Year")
+  carsDF.select("Name", "Year").show()
 
   // EXPRESSIONS
   val simplestExpression = carsDF.col("Weight_in_lbs")
@@ -43,7 +43,7 @@ object ColumnsAndExpressions extends App {
     col("Weight_in_lbs"),
     weightInKgExpression.as("Weight_in_kg"),
     expr("Weight_in_lbs / 2.2").as("Weight_in_kg_2")
-  )
+  ).show()
 
   // selectExpr
   val carsWithSelectExprWeightsDF = carsDF.selectExpr(
@@ -61,7 +61,7 @@ object ColumnsAndExpressions extends App {
   // careful with column names
   carsWithColumnRenamed.selectExpr("`Weight in pounds`")
   // remove a column
-  carsWithColumnRenamed.drop("Cylinders", "Displacement")
+  carsWithColumnRenamed.drop("Cylinders", "Displacement").show()
 
   // filtering
   val europeanCarsDF = carsDF.filter(col("Origin") =!= "USA")

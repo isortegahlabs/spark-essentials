@@ -91,7 +91,8 @@ object DataFramesBasics extends App {
   val smartphones = Seq(
     ("Samsung", "Galaxy S10", "Android", 12),
     ("Apple", "iPhone X", "iOS", 13),
-    ("Nokia", "3310", "THE BEST", 0)
+    ("Nokia", "3310", "THE BEST", 0),
+    ("Huawei", "Lite", "Android", 18)
   )
 
   val smartphonesDF = smartphones.toDF("Make", "Model", "Platform", "CameraMegapixels")
