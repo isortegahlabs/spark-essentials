@@ -9,9 +9,9 @@ object SparkSql extends App {
     .appName("Spark SQL Practice")
     .config("spark.master", "local")
     .config("spark.sql.warehouse.dir", "src/main/resources/warehouse")
+    // only for Spark 2.4 users:
+    // .config("spark.sql.legacy.allowCreatingManagedTableUsingNonemptyLocation", "true")
     .getOrCreate()
-    //.config("spark.sql.legacy.allowCreatingManagedTableUsingNonemptyLocation", "true")
-    //.getOrCreate()
 
   val carsDF = spark.read
     .option("inferSchema", "true")
